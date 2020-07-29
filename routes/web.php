@@ -14,16 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    
-    $id = DB::table('patients_data')->where('pesel', '=', '123')->delete();
-
-    
-    //var_dump($patients->visitDate);
-    
-    return view('welcome');
+    $errorMessage = "Something go wrong";
+    return view('welcome', ['name' => 'Kamil']);
 });
 
-Route::get('pdf-create','PdfController@create');
-Auth::routes();
+Route::resource('patient', 'PatientsController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('pdf-create','PdfController@create');
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

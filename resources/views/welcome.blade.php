@@ -1,20 +1,25 @@
 @extends('layouts.app')
 
-@section('title', 'PdfConverter')
+@section('title', 'Registration Panel')
 
 @section('content')
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <form>
+            <p>Hello {!! $name !!}</p>
+            <form method="POST" action="{{ url('patient') }}">
                 {{--  !!!!!!!!!!!!!!PATIENTS DATA!!!!!!!!!!!!!!!!!  --}}
+                @csrf
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <h4>Patient data</h4>
+                        <h4>Patient informations</h4>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="forname">Name</label>
                       <input type="text" class="form-control" id="forname" name="forname" placeholder="Name">
+                      @error('forname')
+                      <div class="alert alert-danger">{{ $errorMessage }}</div>
+                      @enderror
                   </div>
                   <div class="form-group col-md-6">
                       <label for="Surname">Surname</label>
@@ -44,11 +49,12 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="City">City</label>
-                    <input type="text" class="form-control" id="City" name="city" placeholder="City">                           
+                    <input type="text" class="form-control" id="City" name="city" placeholder="City">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="InputProvince">Province</label>
                     <select id="InputProvince" class="form-control">
+                        <option selected="selected">--Choose your province</option>
                         <option>dolnośląskie</option>
                         <option>kujawsko-pomorskie</option>
                         <option>lubelskie</option>
@@ -81,11 +87,11 @@
             <div class="form-group col-md-12">
                 <div class="form-check form-check-inline">
                     <input type="checkbox" class="form-check-input" id="CorrespondAsLiving" name="correspondAsLiving">
-                    <label for="CorrespondAsLiving">The same as residence address</label>
+                    <label for="CorrespondAsLiving" class="form-check-label">The same as residence address</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input type="checkbox" class="form-check-input" id="CorrespondDiff" name="correspondAsLiving">
-                    <label for="CorrespondAsLiving">Diffrent</label>
+                    <label for="CorrespondDiff" class="form-check-label">Diffrent</label>
                 </div>
             </div>
             <div class="form-group col-md-8">
@@ -102,11 +108,12 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="City">City</label>
-                <input type="text" class="form-control" id="City" name="city" placeholder="City">                           
+                <input type="text" class="form-control" id="City" name="city" placeholder="City">
             </div>
             <div class="form-group col-md-4">
                 <label for="InputProvince">Province</label>
                 <select id="InputProvince" class="form-control">
+                    <option selected="selected">--Choose your province</option>
                     <option>dolnośląskie</option>
                     <option>kujawsko-pomorskie</option>
                     <option>lubelskie</option>
@@ -147,6 +154,11 @@
      <div class="form-group col-md-4">
          <label for="Phone">Phone</label>
          <input type="text" class="form-control" id="Phone" name="phone" placeholder="Phone">
+     </div>
+ </div>
+ <div class="row">
+     <div class="col">
+         <input type="submit" class="float-right btn btn-primary" id="Register" name="register" value="Register">
      </div>
  </div>
 </form>

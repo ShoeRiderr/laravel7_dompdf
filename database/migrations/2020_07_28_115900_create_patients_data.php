@@ -13,7 +13,7 @@ class CreatePatientsData extends Migration
      */
     public function up()
     {
-        Schema::create('patients_data', function (Blueprint $table) {
+        Schema::create('patients', function (Blueprint $table) {
             $table->id();
             $table->string('forname');
             $table->string('surname');
