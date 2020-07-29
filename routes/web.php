@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('welcome', ['name' => 'Kamil']);
 });
 
-Route::resource('patient', 'PatientsController');
+Route::resource('registration', 'PatientController');
 
-//Route::get('pdf-create','PdfController@create');
-//Auth::routes();
+Route::get('pdf-create','PdfController@create');
+Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

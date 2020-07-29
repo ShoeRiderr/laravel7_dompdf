@@ -18,15 +18,23 @@ class CreatePatientsData extends Migration
             $table->string('forname');
             $table->string('surname');
             $table->string('pesel');
-            $table->string('address');
-            $table->string('correspondAddress');
-            $table->string('phoneNum');
+            $table->string('streetRes');
+            $table->string('buildNumRes');
+            $table->string('apartNumRes');
+            $table->string('cityRes');
+            $table->string('provinceRes');
+            $table->string('postCodeRes');
+            $table->string('streetCor');
+            $table->string('buildNumCor');
+            $table->string('apartNumCor');
+            $table->string('cityCor');
+            $table->string('provinceCor');
+            $table->string('postCodeCor');
+            $table->string('phone');
             $table->string('email');
-            $table->string('visitDate');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
