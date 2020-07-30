@@ -13,13 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     $errorMessage = "Something go wrong";
     return view('welcome', ['name' => 'Kamil']);
+
+});*/
+Route::resource('/', 'PatientController');
+
+/*Route::get('/about', function() {
+    return view('pages.about');
 });
 
-Route::resource('registration', 'PatientController');
+Route::get('/users/{id}', function($id) {
+    return "this is ".$id;
+});*/
 
+Route::resource('registration', 'PatientController');
+Route::resource('patientData', 'PatientController');
+Route::resource('editPatient', "PatientController");
 Route::get('pdf-create','PdfController@create');
 Auth::routes();
 

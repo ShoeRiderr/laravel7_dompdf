@@ -35,9 +35,19 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li>
+                            <a class="nav-link" href="{{ url('registration/create') }}">Register</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ url('patientData/show') }}">All patients</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ url('editPatient') }}">Edit</a>
+                        </li>
+                        {{--
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -67,7 +77,9 @@
                                 </div>
                             </li>
                         @endguest
+                        --}}
                     </ul>
+                    
                 </div>
             </div>
         </nav>

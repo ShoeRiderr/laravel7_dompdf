@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class PatientController extends Controller
 {
@@ -14,8 +16,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
-        
+        return view('pages.index');
     }
 
     /**
@@ -25,7 +26,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('registration');
+        return view('pages.registration');
     }
 
     /**
@@ -37,28 +38,27 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         //dd($request->get('buildNumCor'));
-        /*
-            $request->validate([
-            'forname'     => 'required',
-            'surname'     => 'required',
-            'pesel'       => 'required',
-            'streetRes'   => 'required',
-            'buildNumRes' => 'required',
-            'apartNumRes' => 'required',
-            'cityRes'     => 'required',
-            'provinceRes' => 'required',
-            'postCodeRes' => 'required',
-            'streetCor'   => 'required',
-            'buildNumCor' => 'required',
-            'apartNumCor' => 'required',
-            'cityCor'     => 'required',
-            'provinceCor' => 'required',
-            'postCodeCor' => 'required',
-            'phone'       => 'required',
-            'email'       => 'required',
+        $request->validate([
+        'forname'     => 'required',
+        'surname'     => 'required',
+        'pesel'       => 'required',
+        'streetRes'   => 'required',
+        'buildNumRes' => 'required',
+        'apartNumRes' => 'required',
+        'cityRes'     => 'required',
+        'provinceRes' => 'required',
+        'postCodeRes' => 'required',
+        'streetCor'   => 'required',
+        'buildNumCor' => 'required',
+        'apartNumCor' => 'required',
+        'cityCor'     => 'required',
+        'provinceCor' => 'required',
+        'postCodeCor' => 'required',
+        'phone'       => 'required',
+        'email'       => 'required',
 
         ]);
-        */
+         
         $patient = new Patient([
             'forname'     => $request->get('forname'),
             'surname'     => $request->get('surname'),
@@ -78,10 +78,11 @@ class PatientController extends Controller
             'phone'       => $request->get('phone'),
             'email'       => $request->get('email'),
         ]);
-        //$patient->save();
+        $patient->save();
+        //dd('dupa');
         dd($patient->save());
 
-        return redirect()->route('registration'); //->with('succes', 'Data Added');
+        return redirect()->route('pages.registration'); //->with('succes', 'Data Added');
     }
 
     /**
@@ -93,6 +94,8 @@ class PatientController extends Controller
     public function show($id)
     {
         //
+        $patients = Patient::all();
+        return view('pages.patientData')->with('patients', $patients);
     }
 
     /**
@@ -104,6 +107,7 @@ class PatientController extends Controller
     public function edit($id)
     {
         //
+        /*return view('pages.editPatient');*/
     }
 
     /**
