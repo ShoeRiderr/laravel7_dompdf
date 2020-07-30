@@ -44,9 +44,6 @@
                         <li>
                             <a class="nav-link" href="{{ url('patientData/show') }}">All patients</a>
                         </li>
-                        <li>
-                            <a class="nav-link" href="{{ url('editPatient') }}">Edit</a>
-                        </li>
                         {{--
                         <!-- Authentication Links -->
                         @guest
