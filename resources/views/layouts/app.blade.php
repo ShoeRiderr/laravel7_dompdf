@@ -41,9 +41,6 @@
                         <li>
                             <a class="nav-link" href="{{ url('registration/create') }}">Register</a>
                         </li>
-                        <li>
-                            <a class="nav-link" href="{{ url('patientData/show') }}">All patients</a>
-                        </li>
                         {{--
                         <!-- Authentication Links -->
                         @guest

@@ -104,7 +104,7 @@
                     <label for="CorrespondAsLiving" class="form-check-label">The same as residence address</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input value="asd" type="checkbox" class="form-check-input" id="CorrespondDiff" name="correspondAsLiving">
+                    <input value="asd" type="checkbox" class="form-check-input" id="CorrespondDiff" name="correspond_Diff">
                     <label for="CorrespondDiff" class="form-check-label">Diffrent</label>
                 </div>
             </div>

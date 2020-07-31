@@ -27,11 +27,10 @@ Route::resource('/', 'PatientController');
 Route::get('/users/{id}', function($id) {
     return "this is ".$id;
 });*/
-
+Route::resource('pages/patientData', 'PatientController');
 Route::resource('registration', 'PatientController');
-Route::resource('patientData', 'PatientController');
-Route::resource('editPatient', "PatientController");
 Route::get('pdf-create','PdfController@create');
+Route::get('/delete/{id}','PatientController@destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

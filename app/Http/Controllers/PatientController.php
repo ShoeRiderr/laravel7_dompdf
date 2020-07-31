@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 
 class PatientController extends Controller
@@ -16,7 +16,9 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        $patients = Patient::all();
+        return view('pages.index')->with('patients', $patients);
+        return Patient::find($id);
     }
 
     /**
@@ -80,9 +82,8 @@ class PatientController extends Controller
         ]);
         $patient->save();
         //dd('dupa');
-        dd($patient->save());
-
-        return redirect()->route('pages.registration'); //->with('succes', 'Data Added');
+        //dd($patient->save());
+        return redirect('registration/create')->withInput(); //->with('succes', 'Data Added');
     }
 
     /**
@@ -94,10 +95,9 @@ class PatientController extends Controller
     public function show($id)
     {
         //
-        $patients = Patient::all();
-        return view('pages.patientData')->with('patients', $patients);
+        $patients = Patient::find($id);
+        return view('pages.patientData')->with('patient', $patients);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -107,7 +107,7 @@ class PatientController extends Controller
     public function edit($id)
     {
         //
-        /*return view('pages.editPatient');*/
+        
     }
 
     /**
@@ -120,6 +120,29 @@ class PatientController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $request->validate([
+            'forname'     => 'required',
+            'surname'     => 'required',
+            'pesel'       => 'required',
+            'streetRes'   => 'required',
+            'buildNumRes' => 'required',
+            'apartNumRes' => 'required',
+            'cityRes'     => 'required',
+            'provinceRes' => 'required',
+            'postCodeRes' => 'required',
+            'streetCor'   => 'required',
+            'buildNumCor' => 'required',
+            'apartNumCor' => 'required',
+            'cityCor'     => 'required',
+            'provinceCor' => 'required',
+            'postCodeCor' => 'required',
+            'phone'       => 'required',
+            'email'       => 'required',
+        ]);
+
+        Patient::find($id)->update($data);
+
+        return redirect('/');
     }
 
     /**
@@ -131,5 +154,7 @@ class PatientController extends Controller
     public function destroy($id)
     {
         //
+        Patient::find($id)->delete();
+        return redirect('/');
     }
 }

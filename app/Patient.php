@@ -11,11 +11,11 @@ class Patient extends Model
 
     public function getAddressAttribute()
     {
-        return $this->streetRes . ' ' . $this->buildNumRes . '/' . $this->apartNumRes .'  '. $this->provinceRes . ' ' . $this->cityRes . $this->posrCodeRes;
+        return $this->streetRes . ' ' . $this->buildNumRes . '/' . $this->apartNumRes .'  '. $this->provinceRes . ' ' . $this->cityRes . ' ' . $this->postCodeRes;
     }
 
     public function getCorrAddressAttribute() 
     {
-        return $this->streetCor . ' ' . $this->buildNumCor . '/' . $this->apartNumCor .'  '. $this->provinceCor . ' ' . $this->cityCor . $this->posrCodeCor;
+        return $this->streetCor . ' ' . $this->buildNumCor . '/' . $this->apartNumCor .'  '. $this->provinceCor . ' ' . $this->cityCor . ' ' . $this->postCodeCor;
     }
 }
